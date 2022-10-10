@@ -16,12 +16,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author Lopes
  */
-public class NewJInternalFrame extends javax.swing.JInternalFrame {
+public class ClienteInternalFrame extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public NewJInternalFrame(javax.swing.JDesktopPane JDesktopPane) {
+    public ClienteInternalFrame(javax.swing.JDesktopPane JDesktopPane) {
         initComponents();
         btnProximo.setFont(Pegandoafont());
         btnAnteriro.setFont(Pegandoafont());

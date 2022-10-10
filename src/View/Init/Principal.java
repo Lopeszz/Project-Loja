@@ -41,11 +41,11 @@ public class Principal extends javax.swing.JFrame {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 if (index == 1 && subIndex == 1 && menuItem) {
-                    showForm(new NewJInternalFrame(DesktopPane));
+                    showForm(new FuncionarioInternalFrame(DesktopPane));
                     menu.getComponentPopupMenu().setVisible(false);
                 }
                 else if (index == 1 && subIndex == 2 && menuItem) {
-                    showForm(new NewJInternalFrame(DesktopPane));
+                    showForm(new FuncionarioInternalFrame(DesktopPane));
                     menu.getComponentPopupMenu().setVisible(false);
                 }
             }
