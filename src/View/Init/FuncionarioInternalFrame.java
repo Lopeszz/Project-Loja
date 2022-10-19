@@ -7,6 +7,7 @@ package View.Init;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,11 +28,17 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         btnAnteriro.setFont(Pegandoafont());
         initComponents();
         JDesktopPane.add(this);
-        this.setVisible(true);
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         init();
+        try {
+            this.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            System.out.println("Problema no maximizar");
+        }
+        this.setVisible(true);
     }
-    private void init(){
+
+    private void init() {
         table.fixTable(jScrollPane1);
     }
 
@@ -57,15 +64,48 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        CabecalhodeFuncionarioImg1 = new javax.swing.JLabel();
+        SlideMaterialTabbed1 = new Source.Classes.Slide.MaterialTabbed();
+        Painel_Tabela_Funcionario1 = new javax.swing.JPanel();
+        PanelTabela1 = new javax.swing.JPanel();
+        roundPanel2 = new javaswingdev.swing.RoundPanel();
+        lblControleFuncionarios1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table1 = new Source.Classes.Table.Table();
+        PanelButoes1 = new javax.swing.JPanel();
+        btnProximo1 = new Source.Button.ButtonCommun();
+        btnAnteriro1 = new Source.Button.ButtonCommun();
+        jPanel3 = new javax.swing.JPanel();
+        Painel_Dados_Funcionario1 = new javax.swing.JPanel();
+        Componentes1 = new javax.swing.JPanel();
+        PainelBtn1 = new javax.swing.JPanel();
+        btnNovo1 = new Source.Button.ButtonCommun();
+        btnSalvar1 = new Source.Button.ButtonCommun();
+        btnRemover1 = new Source.Button.ButtonCommun();
+        btnAlterar1 = new Source.Button.ButtonCommun();
+        btnCancelar1 = new Source.Button.ButtonCommun();
+        txtId1 = new javax.swing.JTextField();
+        txtEmail1 = new javax.swing.JTextField();
+        txtCargo1 = new javax.swing.JTextField();
+        txtCelular1 = new javax.swing.JTextField();
+        txtUsuario1 = new javax.swing.JTextField();
+        txtNome1 = new javax.swing.JTextField();
+        cbxAcesso1 = new javax.swing.JComboBox<>();
+        txtSenha1 = new javax.swing.JTextField();
+        txtSalario1 = new javax.swing.JTextField();
+        CadastrodeDadosdoFuncionario1 = new javax.swing.JLabel();
+        BackgroundSlideMaterialTabbed1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         CabecalhodeFuncionarioImg = new javax.swing.JLabel();
         SlideMaterialTabbed = new Source.Classes.Slide.MaterialTabbed();
         Painel_Tabela_Funcionario = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        PanelTabela = new javax.swing.JPanel();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         lblControleFuncionarios = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new Source.Classes.Table.Table();
-        jPanel3 = new javax.swing.JPanel();
+        PanelButoes = new javax.swing.JPanel();
         btnProximo = new Source.Button.ButtonCommun();
         btnAnteriro = new Source.Button.ButtonCommun();
         Painel_Dados_Funcionario = new javax.swing.JPanel();
@@ -83,10 +123,370 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         txtUsuario = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         cbxAcesso = new javax.swing.JComboBox<>();
-        txtSenha1 = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
         txtSalario = new javax.swing.JTextField();
         CadastrodeDadosdoFuncionario = new javax.swing.JLabel();
+        BackgroundSlideMaterialTabbed = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
+        jInternalFrame1.setBorder(null);
+        jInternalFrame1.setClosable(true);
+        jInternalFrame1.setIconifiable(true);
+        jInternalFrame1.setMaximizable(true);
+        jInternalFrame1.setMaximumSize(new java.awt.Dimension(1280, 750));
+        jInternalFrame1.setMinimumSize(new java.awt.Dimension(1280, 750));
+        jInternalFrame1.setPreferredSize(new java.awt.Dimension(1280, 750));
+        jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CabecalhodeFuncionarioImg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CabecalhodoFuncionario.png"))); // NOI18N
+        CabecalhodeFuncionarioImg1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jInternalFrame1.getContentPane().add(CabecalhodeFuncionarioImg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, 120));
+
+        SlideMaterialTabbed1.setToolTipText("");
+        SlideMaterialTabbed1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        SlideMaterialTabbed1.setMaximumSize(new java.awt.Dimension(1280, 620));
+        SlideMaterialTabbed1.setMinimumSize(new java.awt.Dimension(1280, 620));
+        SlideMaterialTabbed1.setPreferredSize(new java.awt.Dimension(1280, 620));
+
+        Painel_Tabela_Funcionario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelTabela1.setBackground(new java.awt.Color(224, 243, 253));
+
+        roundPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        roundPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        roundPanel2.setRound(10);
+
+        lblControleFuncionarios1.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
+        lblControleFuncionarios1.setForeground(new java.awt.Color(127, 127, 127));
+        lblControleFuncionarios1.setText("Controle Funcionarios ");
+
+        jScrollPane2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        table = new Source.Classes.Table.Table(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"", null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "CPF", "Salario", "Celular", "Cargo", "Nivel_Acesso"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table1.setFocusable(false);
+        table1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jScrollPane2.setViewportView(table1);
+
+        javax.swing.GroupLayout roundPanel2Layout = new javax.swing.GroupLayout(roundPanel2);
+        roundPanel2.setLayout(roundPanel2Layout);
+        roundPanel2Layout.setHorizontalGroup(
+            roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundPanel2Layout.createSequentialGroup()
+                        .addComponent(lblControleFuncionarios1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1266, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        roundPanel2Layout.setVerticalGroup(
+            roundPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblControleFuncionarios1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout PanelTabela1Layout = new javax.swing.GroupLayout(PanelTabela1);
+        PanelTabela1.setLayout(PanelTabela1Layout);
+        PanelTabela1Layout.setHorizontalGroup(
+            PanelTabela1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(roundPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        PanelTabela1Layout.setVerticalGroup(
+            PanelTabela1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTabela1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(roundPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Painel_Tabela_Funcionario1.add(PanelTabela1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 480));
+
+        PanelButoes1.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnProximo1.setBorder(null);
+        btnProximo1.setForeground(new java.awt.Color(62, 156, 241));
+        btnProximo1.setText("Anterior");
+        btnProximo1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnProximo1.setFocusable(false);
+        btnProximo1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnProximo1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnProximo1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnProximo1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnProximo1.setRadius(60);
+        btnProximo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProximo1ActionPerformed(evt);
+            }
+        });
+        PanelButoes1.add(btnProximo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
+
+        btnAnteriro1.setBorder(null);
+        btnAnteriro1.setForeground(new java.awt.Color(62, 156, 241));
+        btnAnteriro1.setText("Próximo");
+        btnAnteriro1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnAnteriro1.setFocusable(false);
+        btnAnteriro1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnAnteriro1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnAnteriro1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnAnteriro1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnAnteriro1.setRadius(50);
+        btnAnteriro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnteriro1ActionPerformed(evt);
+            }
+        });
+        PanelButoes1.add(btnAnteriro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
+
+        Painel_Tabela_Funcionario1.add(PanelButoes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1300, 150));
+
+        jPanel3.setBackground(new java.awt.Color(224, 243, 253));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        Painel_Tabela_Funcionario1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 0, 140, -1));
+
+        SlideMaterialTabbed1.addTab("  Tabela", Painel_Tabela_Funcionario1);
+
+        Painel_Dados_Funcionario1.setPreferredSize(new java.awt.Dimension(1280, 540));
+        Painel_Dados_Funcionario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Componentes1.setBackground(new java.awt.Color(224, 243, 253));
+        Componentes1.setPreferredSize(new java.awt.Dimension(1280, 750));
+        Componentes1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PainelBtn1.setBackground(new java.awt.Color(224, 243, 253));
+        PainelBtn1.setAlignmentX(1.0F);
+        PainelBtn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10);
+        flowLayout2.setAlignOnBaseline(true);
+        PainelBtn1.setLayout(flowLayout2);
+
+        btnNovo1.setBorder(null);
+        btnNovo1.setForeground(new java.awt.Color(62, 156, 241));
+        btnNovo1.setText("Novo");
+        btnNovo1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnNovo1.setFocusable(false);
+        btnNovo1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnNovo1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnNovo1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnNovo1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnNovo1.setRadius(60);
+        btnNovo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovo1ActionPerformed(evt);
+            }
+        });
+        PainelBtn1.add(btnNovo1);
+
+        btnSalvar1.setBorder(null);
+        btnSalvar1.setForeground(new java.awt.Color(62, 156, 241));
+        btnSalvar1.setText("Salvar");
+        btnSalvar1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnSalvar1.setFocusable(false);
+        btnSalvar1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnSalvar1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnSalvar1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnSalvar1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnSalvar1.setRadius(60);
+        btnSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvar1ActionPerformed(evt);
+            }
+        });
+        PainelBtn1.add(btnSalvar1);
+
+        btnRemover1.setBorder(null);
+        btnRemover1.setForeground(new java.awt.Color(62, 156, 241));
+        btnRemover1.setText("Remover");
+        btnRemover1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnRemover1.setFocusable(false);
+        btnRemover1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnRemover1.setHideActionText(true);
+        btnRemover1.setMargin(new java.awt.Insets(2, 30, 2, 30));
+        btnRemover1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnRemover1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnRemover1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnRemover1.setRadius(60);
+        btnRemover1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemover1ActionPerformed(evt);
+            }
+        });
+        PainelBtn1.add(btnRemover1);
+
+        btnAlterar1.setBorder(null);
+        btnAlterar1.setForeground(new java.awt.Color(62, 156, 241));
+        btnAlterar1.setText("Alterar");
+        btnAlterar1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnAlterar1.setFocusable(false);
+        btnAlterar1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnAlterar1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnAlterar1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnAlterar1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnAlterar1.setRadius(60);
+        btnAlterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterar1ActionPerformed(evt);
+            }
+        });
+        PainelBtn1.add(btnAlterar1);
+
+        btnCancelar1.setBorder(null);
+        btnCancelar1.setForeground(new java.awt.Color(62, 156, 241));
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.setColorOver(new java.awt.Color(200, 235, 253));
+        btnCancelar1.setFocusable(false);
+        btnCancelar1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnCancelar1.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnCancelar1.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnCancelar1.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnCancelar1.setRadius(60);
+        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar1ActionPerformed(evt);
+            }
+        });
+        PainelBtn1.add(btnCancelar1);
+
+        Componentes1.add(PainelBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1280, -1));
+
+        txtId1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtId1.setBorder(null);
+        txtId1.setOpaque(false);
+        Componentes1.add(txtId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 52, 390, 38));
+
+        txtEmail1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtEmail1.setBorder(null);
+        txtEmail1.setOpaque(false);
+        Componentes1.add(txtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 167, 390, 38));
+
+        txtCargo1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtCargo1.setBorder(null);
+        txtCargo1.setOpaque(false);
+        Componentes1.add(txtCargo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 224, 390, 38));
+
+        txtCelular1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtCelular1.setBorder(null);
+        txtCelular1.setOpaque(false);
+        Componentes1.add(txtCelular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 282, 390, 38));
+
+        txtUsuario1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtUsuario1.setBorder(null);
+        txtUsuario1.setOpaque(false);
+        Componentes1.add(txtUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 339, 390, 38));
+
+        txtNome1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtNome1.setBorder(null);
+        txtNome1.setOpaque(false);
+        Componentes1.add(txtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 390, 38));
+
+        cbxAcesso1.setBackground(new java.awt.Color(225, 226, 230));
+        cbxAcesso1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        cbxAcesso1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Usuário", "Administrador"}));
+        cbxAcesso1.setBorder(null);
+        cbxAcesso1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAcesso1ActionPerformed(evt);
+            }
+        });
+        Componentes1.add(cbxAcesso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 47, 396, 38));
+
+        txtSenha1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtSenha1.setBorder(null);
+        txtSenha1.setOpaque(false);
+        Componentes1.add(txtSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 397, 390, 38));
+
+        txtSalario1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtSalario1.setBorder(null);
+        txtSalario1.setOpaque(false);
+        Componentes1.add(txtSalario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 110, 390, 38));
+
+        CadastrodeDadosdoFuncionario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CadastrodeDadosdoFuncionario.png"))); // NOI18N
+        Componentes1.add(CadastrodeDadosdoFuncionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, -1));
+
+        Painel_Dados_Funcionario1.add(Componentes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 580));
+
+        SlideMaterialTabbed1.addTab("Dados", Painel_Dados_Funcionario1);
+
+        jInternalFrame1.getContentPane().add(SlideMaterialTabbed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1340, 730));
+
+        BackgroundSlideMaterialTabbed1.setBackground(new java.awt.Color(224, 243, 253));
+
+        javax.swing.GroupLayout BackgroundSlideMaterialTabbed1Layout = new javax.swing.GroupLayout(BackgroundSlideMaterialTabbed1);
+        BackgroundSlideMaterialTabbed1.setLayout(BackgroundSlideMaterialTabbed1Layout);
+        BackgroundSlideMaterialTabbed1Layout.setHorizontalGroup(
+            BackgroundSlideMaterialTabbed1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1360, Short.MAX_VALUE)
+        );
+        BackgroundSlideMaterialTabbed1Layout.setVerticalGroup(
+            BackgroundSlideMaterialTabbed1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jInternalFrame1.getContentPane().add(BackgroundSlideMaterialTabbed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1360, 50));
+
+        jPanel4.setBackground(new java.awt.Color(236, 236, 236));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        jInternalFrame1.getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 240, 120));
+
+        setBorder(null);
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setMaximumSize(new java.awt.Dimension(1280, 750));
         setMinimumSize(new java.awt.Dimension(1280, 750));
         setPreferredSize(new java.awt.Dimension(1280, 750));
@@ -94,7 +494,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
 
         CabecalhodeFuncionarioImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CabecalhodoFuncionario.png"))); // NOI18N
         CabecalhodeFuncionarioImg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(CabecalhodeFuncionarioImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1330, 120));
+        getContentPane().add(CabecalhodeFuncionarioImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, 120));
 
         SlideMaterialTabbed.setToolTipText("");
         SlideMaterialTabbed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -104,7 +504,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
 
         Painel_Tabela_Funcionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(224, 243, 253));
+        PanelTabela.setBackground(new java.awt.Color(224, 243, 253));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -159,8 +559,8 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel1Layout.createSequentialGroup()
                         .addComponent(lblControleFuncionarios)
-                        .addGap(0, 904, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1219, Short.MAX_VALUE))
                 .addContainerGap())
         );
         roundPanel1Layout.setVerticalGroup(
@@ -169,29 +569,31 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(lblControleFuncionarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+        javax.swing.GroupLayout PanelTabelaLayout = new javax.swing.GroupLayout(PanelTabela);
+        PanelTabela.setLayout(PanelTabelaLayout);
+        PanelTabelaLayout.setHorizontalGroup(
+            PanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTabelaLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PanelTabelaLayout.setVerticalGroup(
+            PanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTabelaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
-        Painel_Tabela_Funcionario.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 480));
+        Painel_Tabela_Funcionario.add(PanelTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 480));
 
-        jPanel3.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProximo.setBorder(null);
         btnProximo.setForeground(new java.awt.Color(62, 156, 241));
@@ -208,6 +610,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 btnProximoActionPerformed(evt);
             }
         });
+        PanelButoes.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
 
         btnAnteriro.setBorder(null);
         btnAnteriro.setForeground(new java.awt.Color(62, 156, 241));
@@ -224,29 +627,9 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 btnAnteriroActionPerformed(evt);
             }
         });
+        PanelButoes.add(btnAnteriro, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
-                .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151)
-                .addComponent(btnAnteriro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(399, 399, 399))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnteriro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-
-        Painel_Tabela_Funcionario.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1300, 200));
+        Painel_Tabela_Funcionario.add(PanelButoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1300, 150));
 
         SlideMaterialTabbed.addTab("  Tabela", Painel_Tabela_Funcionario);
 
@@ -395,10 +778,10 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         });
         Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 47, 396, 38));
 
-        txtSenha1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtSenha1.setBorder(null);
-        txtSenha1.setOpaque(false);
-        Componentes.add(txtSenha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 397, 390, 38));
+        txtSenha.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtSenha.setBorder(null);
+        txtSenha.setOpaque(false);
+        Componentes.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 397, 390, 38));
 
         txtSalario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtSalario.setBorder(null);
@@ -413,9 +796,39 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
 
         SlideMaterialTabbed.addTab("Dados", Painel_Dados_Funcionario);
 
-        getContentPane().add(SlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1290, 730));
+        getContentPane().add(SlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1340, 730));
 
-        setBounds(0, 0, 1280, 760);
+        BackgroundSlideMaterialTabbed.setBackground(new java.awt.Color(224, 243, 253));
+
+        javax.swing.GroupLayout BackgroundSlideMaterialTabbedLayout = new javax.swing.GroupLayout(BackgroundSlideMaterialTabbed);
+        BackgroundSlideMaterialTabbed.setLayout(BackgroundSlideMaterialTabbedLayout);
+        BackgroundSlideMaterialTabbedLayout.setHorizontalGroup(
+            BackgroundSlideMaterialTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1360, Short.MAX_VALUE)
+        );
+        BackgroundSlideMaterialTabbedLayout.setVerticalGroup(
+            BackgroundSlideMaterialTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(BackgroundSlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1360, 50));
+
+        jPanel2.setBackground(new java.awt.Color(236, 236, 236));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 240, 120));
+
+        setBounds(0, 0, 1314, 760);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -450,36 +863,103 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProximoActionPerformed
 
+    private void btnProximo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProximo1ActionPerformed
+
+    private void btnAnteriro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriro1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAnteriro1ActionPerformed
+
+    private void btnNovo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNovo1ActionPerformed
+
+    private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvar1ActionPerformed
+
+    private void btnRemover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemover1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemover1ActionPerformed
+
+    private void btnAlterar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterar1ActionPerformed
+
+    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar1ActionPerformed
+
+    private void cbxAcesso1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAcesso1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxAcesso1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BackgroundSlideMaterialTabbed;
+    private javax.swing.JPanel BackgroundSlideMaterialTabbed1;
     private javax.swing.JLabel CabecalhodeFuncionarioImg;
+    private javax.swing.JLabel CabecalhodeFuncionarioImg1;
     private javax.swing.JLabel CadastrodeDadosdoFuncionario;
+    private javax.swing.JLabel CadastrodeDadosdoFuncionario1;
     private javax.swing.JPanel Componentes;
+    private javax.swing.JPanel Componentes1;
     private javax.swing.JPanel PainelBtn;
+    private javax.swing.JPanel PainelBtn1;
     private javax.swing.JPanel Painel_Dados_Funcionario;
+    private javax.swing.JPanel Painel_Dados_Funcionario1;
     private javax.swing.JPanel Painel_Tabela_Funcionario;
+    private javax.swing.JPanel Painel_Tabela_Funcionario1;
+    private javax.swing.JPanel PanelButoes;
+    private javax.swing.JPanel PanelButoes1;
+    private javax.swing.JPanel PanelTabela;
+    private javax.swing.JPanel PanelTabela1;
     private Source.Classes.Slide.MaterialTabbed SlideMaterialTabbed;
+    private Source.Classes.Slide.MaterialTabbed SlideMaterialTabbed1;
     private Source.Button.ButtonCommun btnAlterar;
+    private Source.Button.ButtonCommun btnAlterar1;
     private Source.Button.ButtonCommun btnAnteriro;
+    private Source.Button.ButtonCommun btnAnteriro1;
     private Source.Button.ButtonCommun btnCancelar;
+    private Source.Button.ButtonCommun btnCancelar1;
     private Source.Button.ButtonCommun btnNovo;
+    private Source.Button.ButtonCommun btnNovo1;
     private Source.Button.ButtonCommun btnProximo;
+    private Source.Button.ButtonCommun btnProximo1;
     private Source.Button.ButtonCommun btnRemover;
+    private Source.Button.ButtonCommun btnRemover1;
     private Source.Button.ButtonCommun btnSalvar;
+    private Source.Button.ButtonCommun btnSalvar1;
     private javax.swing.JComboBox<String> cbxAcesso;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> cbxAcesso1;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblControleFuncionarios;
+    private javax.swing.JLabel lblControleFuncionarios1;
     private javaswingdev.swing.RoundPanel roundPanel1;
+    private javaswingdev.swing.RoundPanel roundPanel2;
     private Source.Classes.Table.Table table;
+    private Source.Classes.Table.Table table1;
     private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtCargo1;
     private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCelular1;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmail1;
     private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtId1;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNome1;
     private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtSalario1;
+    private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtSenha1;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtUsuario1;
     // End of variables declaration//GEN-END:variables
 }

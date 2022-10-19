@@ -36,20 +36,23 @@ public class Principal extends javax.swing.JFrame {
         menu.addItem("Cadastrar", "Funcionário", "Cliente", "Produto", "Fornecedor");
         menu.applay(this);
         menu.setFont(Pegandoafont());
-
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 if (index == 1 && subIndex == 1 && menuItem) {
                     showForm(new FuncionarioInternalFrame(DesktopPane));
                     menu.getComponentPopupMenu().setVisible(false);
-                }
-                else if (index == 1 && subIndex == 2 && menuItem) {
-                    showForm(new FuncionarioInternalFrame(DesktopPane));
+                } else if (index == 1 && subIndex == 2 && menuItem) {
+
+                    showForm(new ClienteInternalFrame(DesktopPane));
                     menu.getComponentPopupMenu().setVisible(false);
                 }
+                else if (index == 0 && menuItem) {
+                    System.out.println("voltar pra telainicial");                   
+                }
             }
-        });
+        }
+        );
     }
 
     private void showForm(Component com) {
@@ -104,7 +107,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 750));
 
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/tela principal.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Inicial/telaInicial.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -114,7 +117,6 @@ public class Principal extends javax.swing.JFrame {
     public static void main(String args[]) {
         IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
 
-       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);

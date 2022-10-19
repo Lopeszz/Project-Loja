@@ -7,6 +7,7 @@ package View.Init;
 
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,13 +26,18 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         initComponents();
         btnProximo.setFont(Pegandoafont());
         btnAnteriro.setFont(Pegandoafont());
-        initComponents();
         JDesktopPane.add(this);
-        this.setVisible(true);
+        try {
+            this.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            System.out.println("Problema no maximizar");
+        }
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        this.setVisible(true);
         init();
     }
-    private void init(){
+
+    private void init() {
         table.fixTable(jScrollPane1);
     }
 
@@ -57,15 +63,15 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CabecalhodeFuncionarioImg = new javax.swing.JLabel();
+        CabecalhodeClienteImg = new javax.swing.JLabel();
         SlideMaterialTabbed = new Source.Classes.Slide.MaterialTabbed();
         Painel_Tabela_Funcionario = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        PanelTabela = new javax.swing.JPanel();
         roundPanel1 = new javaswingdev.swing.RoundPanel();
         lblControleFuncionarios = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new Source.Classes.Table.Table();
-        jPanel3 = new javax.swing.JPanel();
+        PanelButoes = new javax.swing.JPanel();
         btnProximo = new Source.Button.ButtonCommun();
         btnAnteriro = new Source.Button.ButtonCommun();
         Painel_Dados_Funcionario = new javax.swing.JPanel();
@@ -76,25 +82,33 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         btnRemover = new Source.Button.ButtonCommun();
         btnAlterar = new Source.Button.ButtonCommun();
         btnCancelar = new Source.Button.ButtonCommun();
-        txtId = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtCargo = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        txtCidade = new javax.swing.JTextField();
         txtCelular = new javax.swing.JTextField();
-        txtUsuario = new javax.swing.JTextField();
+        txtCEP = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         cbxAcesso = new javax.swing.JComboBox<>();
-        CadastrodeDadosdoFuncionario = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        txtRua = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        CadastrodeDadosdoCliente = new javax.swing.JLabel();
+        BackgroundSlideMaterialTabbed = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
+        setBorder(null);
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setMaximumSize(new java.awt.Dimension(1280, 750));
-        setMinimumSize(new java.awt.Dimension(1280, 750));
+        setMinimumSize(new java.awt.Dimension(5, 5));
         setPreferredSize(new java.awt.Dimension(1280, 750));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CabecalhodeFuncionarioImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CabecalhodoFuncionario.png"))); // NOI18N
-        CabecalhodeFuncionarioImg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(CabecalhodeFuncionarioImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1330, 120));
+        CabecalhodeClienteImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Cliente/cabecalho/CabecalhodoCliente.png"))); // NOI18N
+        CabecalhodeClienteImg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(CabecalhodeClienteImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1280, 120));
 
         SlideMaterialTabbed.setToolTipText("");
         SlideMaterialTabbed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
@@ -104,7 +118,7 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
 
         Painel_Tabela_Funcionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(224, 243, 253));
+        PanelTabela.setBackground(new java.awt.Color(224, 243, 253));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -112,7 +126,7 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
 
         lblControleFuncionarios.setFont(new java.awt.Font("SansSerif", 1, 26)); // NOI18N
         lblControleFuncionarios.setForeground(new java.awt.Color(127, 127, 127));
-        lblControleFuncionarios.setText("Controle Funcionarios ");
+        lblControleFuncionarios.setText("Controle Clientes ");
 
         jScrollPane1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -159,8 +173,8 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(roundPanel1Layout.createSequentialGroup()
                         .addComponent(lblControleFuncionarios)
-                        .addGap(0, 904, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1226, Short.MAX_VALUE))
                 .addContainerGap())
         );
         roundPanel1Layout.setVerticalGroup(
@@ -173,25 +187,26 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+        javax.swing.GroupLayout PanelTabelaLayout = new javax.swing.GroupLayout(PanelTabela);
+        PanelTabela.setLayout(PanelTabelaLayout);
+        PanelTabelaLayout.setHorizontalGroup(
+            PanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTabelaLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(roundPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PanelTabelaLayout.setVerticalGroup(
+            PanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelTabelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(roundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Painel_Tabela_Funcionario.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 480));
+        Painel_Tabela_Funcionario.add(PanelTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 480));
 
-        jPanel3.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProximo.setBorder(null);
         btnProximo.setForeground(new java.awt.Color(62, 156, 241));
@@ -208,6 +223,7 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
                 btnProximoActionPerformed(evt);
             }
         });
+        PanelButoes.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
 
         btnAnteriro.setBorder(null);
         btnAnteriro.setForeground(new java.awt.Color(62, 156, 241));
@@ -224,29 +240,9 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
                 btnAnteriroActionPerformed(evt);
             }
         });
+        PanelButoes.add(btnAnteriro, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
-                .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151)
-                .addComponent(btnAnteriro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(399, 399, 399))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAnteriro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-
-        Painel_Tabela_Funcionario.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1300, 200));
+        Painel_Tabela_Funcionario.add(PanelButoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1350, 150));
 
         SlideMaterialTabbed.addTab("  Tabela", Painel_Tabela_Funcionario);
 
@@ -353,78 +349,119 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
 
         Componentes.add(PainelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1280, -1));
 
-        txtId.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtId.setBorder(null);
-        txtId.setOpaque(false);
-        Componentes.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 47, 390, 38));
+        txtNumero.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtNumero.setBorder(null);
+        txtNumero.setOpaque(false);
+        Componentes.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 47, 390, 38));
 
-        txtEmail.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtEmail.setBorder(null);
-        txtEmail.setOpaque(false);
-        Componentes.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 167, 390, 38));
-        txtEmail.getAccessibleContext().setAccessibleName("");
-
-        txtCargo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtCargo.setBorder(null);
-        txtCargo.setOpaque(false);
-        Componentes.add(txtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 224, 390, 38));
-
-        txtSenha.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtSenha.setBorder(null);
-        txtSenha.setOpaque(false);
-        Componentes.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 397, 390, 38));
+        txtCidade.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtCidade.setBorder(null);
+        txtCidade.setOpaque(false);
+        Componentes.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 167, 390, 38));
+        txtCidade.getAccessibleContext().setAccessibleName("");
 
         txtCelular.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtCelular.setBorder(null);
         txtCelular.setOpaque(false);
+        txtCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCelularActionPerformed(evt);
+            }
+        });
         Componentes.add(txtCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 282, 390, 38));
 
-        txtUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        txtUsuario.setBorder(null);
-        txtUsuario.setOpaque(false);
-        Componentes.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 339, 390, 38));
+        txtCEP.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtCEP.setBorder(null);
+        txtCEP.setOpaque(false);
+        Componentes.add(txtCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 339, 390, 38));
 
         txtNome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtNome.setBorder(null);
         txtNome.setOpaque(false);
         Componentes.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 390, 38));
 
+        txtId.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtId.setBorder(null);
+        txtId.setOpaque(false);
+        Componentes.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 52, 390, 38));
+
         cbxAcesso.setBackground(new java.awt.Color(225, 226, 230));
         cbxAcesso.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        cbxAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Usuário", "Administrador"}));
+        cbxAcesso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "","AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbxAcesso.setBorder(null);
         cbxAcesso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxAcessoActionPerformed(evt);
             }
         });
-        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 47, 396, 38));
+        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 224, 396, 38));
 
-        CadastrodeDadosdoFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CadastrodeDadosdoFuncionario.png"))); // NOI18N
-        Componentes.add(CadastrodeDadosdoFuncionario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, -1));
+        txtRua.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtRua.setBorder(null);
+        txtRua.setOpaque(false);
+        Componentes.add(txtRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 397, 390, 38));
+
+        txtBairro.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtBairro.setBorder(null);
+        txtBairro.setOpaque(false);
+        Componentes.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 110, 390, 38));
+        txtBairro.getAccessibleContext().setAccessibleName("");
+
+        txtCPF.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtCPF.setBorder(null);
+        txtCPF.setOpaque(false);
+        Componentes.add(txtCPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 167, 390, 38));
+
+        txtEmail.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtEmail.setBorder(null);
+        txtEmail.setOpaque(false);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        Componentes.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 224, 390, 38));
+
+        CadastrodeDadosdoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Cliente/cabecalho/CadastrodeDadosdoCliente.png"))); // NOI18N
+        Componentes.add(CadastrodeDadosdoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1310, -1));
 
         Painel_Dados_Funcionario.add(Componentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 580));
 
         SlideMaterialTabbed.addTab("Dados", Painel_Dados_Funcionario);
 
-        getContentPane().add(SlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1290, 730));
+        getContentPane().add(SlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1340, 730));
 
-        jPanel2.setBackground(new java.awt.Color(224, 243, 253));
+        BackgroundSlideMaterialTabbed.setBackground(new java.awt.Color(224, 243, 253));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1310, Short.MAX_VALUE)
+        javax.swing.GroupLayout BackgroundSlideMaterialTabbedLayout = new javax.swing.GroupLayout(BackgroundSlideMaterialTabbed);
+        BackgroundSlideMaterialTabbed.setLayout(BackgroundSlideMaterialTabbedLayout);
+        BackgroundSlideMaterialTabbedLayout.setHorizontalGroup(
+            BackgroundSlideMaterialTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1300, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        BackgroundSlideMaterialTabbedLayout.setVerticalGroup(
+            BackgroundSlideMaterialTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 120, 1310, 50));
+        getContentPane().add(BackgroundSlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1300, 50));
 
-        setBounds(0, 0, 1280, 760);
+        jPanel1.setBackground(new java.awt.Color(236, 236, 236));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 110, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 0, 110, 120));
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
@@ -459,14 +496,25 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProximoActionPerformed
 
+    private void txtCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCelularActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel CabecalhodeFuncionarioImg;
-    private javax.swing.JLabel CadastrodeDadosdoFuncionario;
+    private javax.swing.JPanel BackgroundSlideMaterialTabbed;
+    private javax.swing.JLabel CabecalhodeClienteImg;
+    private javax.swing.JLabel CadastrodeDadosdoCliente;
     private javax.swing.JPanel Componentes;
     private javax.swing.JPanel PainelBtn;
     private javax.swing.JPanel Painel_Dados_Funcionario;
     private javax.swing.JPanel Painel_Tabela_Funcionario;
+    private javax.swing.JPanel PanelButoes;
+    private javax.swing.JPanel PanelTabela;
     private Source.Classes.Slide.MaterialTabbed SlideMaterialTabbed;
     private Source.Button.ButtonCommun btnAlterar;
     private Source.Button.ButtonCommun btnAnteriro;
@@ -477,18 +525,19 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
     private Source.Button.ButtonCommun btnSalvar;
     private javax.swing.JComboBox<String> cbxAcesso;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblControleFuncionarios;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private Source.Classes.Table.Table table;
-    private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextField txtCEP;
+    private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCelular;
+    private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtRua;
     // End of variables declaration//GEN-END:variables
 }
