@@ -91,7 +91,7 @@
             <Container class="javax.swing.JPanel" name="PanelTabela">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="f3" red="e0" type="rgb"/>
+                  <Color blue="df" green="df" red="e4" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -269,7 +269,7 @@
             <Container class="javax.swing.JPanel" name="PanelButoes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="f3" red="e0" type="rgb"/>
+                  <Color blue="df" green="df" red="e4" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -379,7 +379,7 @@
             <Container class="javax.swing.JPanel" name="Componentes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fd" green="f3" red="e0" type="rgb"/>
+                  <Color blue="df" green="df" red="e4" type="rgb"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[1280, 750]"/>
@@ -398,7 +398,7 @@
                 <Container class="javax.swing.JPanel" name="PainelBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="fd" green="f3" red="e0" type="rgb"/>
+                      <Color blue="df" green="df" red="e4" type="rgb"/>
                     </Property>
                     <Property name="alignmentX" type="float" value="1.0"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -843,7 +843,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="825" y="224" width="396" height="38"/>
+                      <AbsoluteConstraints x="857" y="228" width="396" height="38"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -934,6 +934,31 @@
           </SubComponents>
         </Container>
       </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="BackgroundSlideMaterialTabbed1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="df" green="df" red="e4" type="rgb"/>
+        </Property>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="120" width="1360" height="50"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="1360" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
     </Container>
     <Container class="javax.swing.JPanel" name="BackgroundSlideMaterialTabbed">
       <Properties>

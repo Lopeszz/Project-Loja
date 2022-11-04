@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
+import javax.swing.JDesktopPane;
 import javax.swing.UIManager;
 
 /**
@@ -34,21 +35,25 @@ public class Principal extends javax.swing.JFrame {
         menu.setHeaderGradient(false);
         menu.addItem("Inicial");
         menu.addItem("Cadastrar", "Funcionário", "Cliente", "Produto", "Fornecedor");
-        menu.applay(this);
         menu.setFont(Pegandoafont());
+        menu.applay(this);
+        
+  
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 if (index == 1 && subIndex == 1 && menuItem) {
-                    showForm(new FuncionarioInternalFrame(DesktopPane));
+                    FuncionarioInternalFrame f1 = new FuncionarioInternalFrame(DesktopPane);
+                    showForm(f1);
                     menu.getComponentPopupMenu().setVisible(false);
                 } else if (index == 1 && subIndex == 2 && menuItem) {
-
-                    showForm(new ClienteInternalFrame(DesktopPane));
+                    FuncionarioInternalFrame f1 = new FuncionarioInternalFrame(DesktopPane);
+                    showForm(f1);
                     menu.getComponentPopupMenu().setVisible(false);
-                }
-                else if (index == 0 && menuItem) {
-                    System.out.println("voltar pra telainicial");                   
+                    
+                } else if (index == 0 && menuItem) {
+                    menu.getComponentPopupMenu().setVisible(false);
+                    
                 }
             }
         }
@@ -74,7 +79,6 @@ public class Principal extends javax.swing.JFrame {
         }
         return null;
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -116,10 +120,10 @@ public class Principal extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
+                
             }
         });
     }

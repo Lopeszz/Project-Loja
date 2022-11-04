@@ -94,6 +94,7 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
         txtCPF = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         CadastrodeDadosdoCliente = new javax.swing.JLabel();
+        BackgroundSlideMaterialTabbed1 = new javax.swing.JPanel();
         BackgroundSlideMaterialTabbed = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -118,7 +119,7 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
 
         Painel_Tabela_Funcionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelTabela.setBackground(new java.awt.Color(224, 243, 253));
+        PanelTabela.setBackground(new java.awt.Color(228, 223, 223));
 
         roundPanel1.setBackground(new java.awt.Color(255, 255, 255));
         roundPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -205,7 +206,7 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
 
         Painel_Tabela_Funcionario.add(PanelTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 480));
 
-        PanelButoes.setBackground(new java.awt.Color(224, 243, 253));
+        PanelButoes.setBackground(new java.awt.Color(228, 223, 223));
         PanelButoes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnProximo.setBorder(null);
@@ -249,11 +250,11 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
         Painel_Dados_Funcionario.setPreferredSize(new java.awt.Dimension(1280, 540));
         Painel_Dados_Funcionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Componentes.setBackground(new java.awt.Color(224, 243, 253));
+        Componentes.setBackground(new java.awt.Color(228, 223, 223));
         Componentes.setPreferredSize(new java.awt.Dimension(1280, 750));
         Componentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PainelBtn.setBackground(new java.awt.Color(224, 243, 253));
+        PainelBtn.setBackground(new java.awt.Color(228, 223, 223));
         PainelBtn.setAlignmentX(1.0F);
         PainelBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10);
@@ -394,7 +395,7 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
                 cbxAcessoActionPerformed(evt);
             }
         });
-        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 224, 396, 38));
+        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(857, 228, 396, 38));
 
         txtRua.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtRua.setBorder(null);
@@ -430,6 +431,21 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
         SlideMaterialTabbed.addTab("Dados", Painel_Dados_Funcionario);
 
         getContentPane().add(SlideMaterialTabbed, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 1340, 730));
+
+        BackgroundSlideMaterialTabbed1.setBackground(new java.awt.Color(228, 223, 223));
+
+        javax.swing.GroupLayout BackgroundSlideMaterialTabbed1Layout = new javax.swing.GroupLayout(BackgroundSlideMaterialTabbed1);
+        BackgroundSlideMaterialTabbed1.setLayout(BackgroundSlideMaterialTabbed1Layout);
+        BackgroundSlideMaterialTabbed1Layout.setHorizontalGroup(
+            BackgroundSlideMaterialTabbed1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1360, Short.MAX_VALUE)
+        );
+        BackgroundSlideMaterialTabbed1Layout.setVerticalGroup(
+            BackgroundSlideMaterialTabbed1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(BackgroundSlideMaterialTabbed1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1360, 50));
 
         BackgroundSlideMaterialTabbed.setBackground(new java.awt.Color(224, 243, 253));
 
@@ -507,6 +523,7 @@ public class ProdutoInternalFrame extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundSlideMaterialTabbed;
+    private javax.swing.JPanel BackgroundSlideMaterialTabbed1;
     private javax.swing.JLabel CabecalhodeProdutoImg;
     private javax.swing.JLabel CadastrodeDadosdoCliente;
     private javax.swing.JPanel Componentes;

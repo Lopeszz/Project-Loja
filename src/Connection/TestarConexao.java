@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class TestarConexao {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {    
         IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
         try {
             new ConnectionFactory().getConnection();

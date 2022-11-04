@@ -10,20 +10,46 @@ package Modelos;
  * @author giova
  */
 public class Funcionario {
-    private int id_funcionario;
+
+    private Integer id_funcionario;
     private String nome;
     private String cpf;
-    private String email;
+    private String usuario;
     private String senha;
+    private double salario;
+    private String celular;
     private String cargo;
     private String nivel_acesso;
-    private String celular;  
 
-    public int getId_funcionario() {
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    public Integer getId_funcionario() {
         return id_funcionario;
     }
 
-    public void setId_funcionario(int id_funcionario) {
+    public void setId_funcionario(Integer id_funcionario) {
         this.id_funcionario = id_funcionario;
     }
 
@@ -43,20 +69,12 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
     public String getCargo() {
@@ -75,14 +93,4 @@ public class Funcionario {
         this.nivel_acesso = nivel_acesso;
     }
 
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-    
-    
-    
 }

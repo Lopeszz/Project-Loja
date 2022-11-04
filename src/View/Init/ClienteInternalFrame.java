@@ -251,11 +251,11 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         Painel_Dados_Funcionario.setPreferredSize(new java.awt.Dimension(1280, 540));
         Painel_Dados_Funcionario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Componentes.setBackground(new java.awt.Color(224, 243, 253));
+        Componentes.setBackground(new java.awt.Color(228, 223, 223));
         Componentes.setPreferredSize(new java.awt.Dimension(1280, 750));
         Componentes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PainelBtn.setBackground(new java.awt.Color(224, 243, 253));
+        PainelBtn.setBackground(new java.awt.Color(228, 223, 223));
         PainelBtn.setAlignmentX(1.0F);
         PainelBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10);
@@ -354,12 +354,12 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         txtNumero.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtNumero.setBorder(null);
         txtNumero.setOpaque(false);
-        Componentes.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 47, 390, 38));
+        Componentes.add(txtNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 50, 390, 38));
 
         txtCidade.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtCidade.setBorder(null);
         txtCidade.setOpaque(false);
-        Componentes.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 167, 390, 38));
+        Componentes.add(txtCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 170, 390, 38));
         txtCidade.getAccessibleContext().setAccessibleName("");
 
         txtCelular.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -396,7 +396,7 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
                 cbxAcessoActionPerformed(evt);
             }
         });
-        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 224, 396, 38));
+        Componentes.add(cbxAcesso, new org.netbeans.lib.awtextra.AbsoluteConstraints(857, 228, 396, 38));
 
         txtRua.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtRua.setBorder(null);
@@ -406,7 +406,7 @@ public class ClienteInternalFrame extends javax.swing.JInternalFrame {
         txtBairro.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         txtBairro.setBorder(null);
         txtBairro.setOpaque(false);
-        Componentes.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 110, 390, 38));
+        Componentes.add(txtBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 390, 38));
         txtBairro.getAccessibleContext().setAccessibleName("");
 
         txtCPF.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
