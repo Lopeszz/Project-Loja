@@ -11,10 +11,13 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,12 +34,13 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         btnAnteriro.setFont(Pegandoafont());
         JDesktopPane.add(this);
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
-        init();
+        InitTable();
         this.Maximizar();
         this.setVisible(true);
+
     }
 
-    private void init() {
+    private void InitTable() {
         table.fixTable(jScrollPane1);
     }
 
@@ -58,6 +62,27 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
             this.setMaximum(true);
         } catch (PropertyVetoException ex) {
             System.out.println("Problema no maximizar");
+        }
+    }
+
+    public void CarregarTabela() {
+        DAOFuncionario dao = new DAOFuncionario();
+        List<Funcionario> Lista = dao.listarFuncionario();
+        DefaultTableModel dados = (DefaultTableModel) table.getModel();
+        dados.setNumRows(0);
+        for (Funcionario obj : Lista) {
+            dados.addRow(new Object[]{
+                obj.getId_funcionario(),
+                obj.getNome(),
+                obj.getCpf(),
+                obj.getUsuario(),
+                obj.getSenha(),
+                obj.getSalario(),
+                obj.getCelular(),
+                obj.getCargo(),
+                obj.getNivel_acesso()
+            });
+
         }
     }
 
@@ -109,6 +134,23 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         setMaximumSize(new java.awt.Dimension(1280, 750));
         setMinimumSize(new java.awt.Dimension(1280, 750));
         setPreferredSize(new java.awt.Dimension(1280, 750));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CabecalhodeFuncionarioImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Funcionario/cabecalho/CabecalhodoFuncionario.png"))); // NOI18N
@@ -144,32 +186,41 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         };
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"", null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "CPF", "Salario", "Celular", "Cargo", "Nivel_Acesso"
+                "ID", "Nome", "CPF", "Usuário", "Senha", "Salario", "Celular", "Cargo", "Nivel_Acesso"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
+        table.setAlignmentX(1.0F);
         table.setFocusable(false);
         table.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setPreferredWidth(3);
+        }
 
         javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
         roundPanel1.setLayout(roundPanel1Layout);
@@ -466,12 +517,12 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
         Funcionario obj = new Funcionario();
-        obj.setId_funcionario(Integer.parseInt(txtId.getText())); // Convertento o varchar do campo em integer
         obj.setNome(txtNome.getText());
         obj.setCpf(txtCpf.getText());
         obj.setUsuario(txtUsuario.getText());
         obj.setSenha(txtSenha.getText());
         obj.setCelular(txtCelular.getText());
+        obj.setSalario(Double.parseDouble(txtSalario.getText()));
         obj.setCargo(cbxCargo.getSelectedItem().toString());
         obj.setNivel_acesso(cbxAcesso.getSelectedItem().toString());
         DAOFuncionario dao = new DAOFuncionario();
@@ -481,10 +532,25 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
+        Funcionario obj = new Funcionario();
+        obj.setId_funcionario(Integer.parseInt(txtId.getText()));
+        DAOFuncionario dao = new DAOFuncionario();
+        dao.Delete(obj);
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        //botao alterar
+        Funcionario obj = new Funcionario();
+        obj.setNome(txtNome.getText());
+        obj.setCpf(txtCpf.getText());
+        obj.setUsuario(txtUsuario.getText());
+        obj.setSenha(txtSenha.getText());
+        obj.setCelular(txtCelular.getText());
+        obj.setCargo(cbxCargo.getSelectedItem().toString());
+        obj.setNivel_acesso(cbxAcesso.getSelectedItem().toString());
+        obj.setId_funcionario(Integer.parseInt(txtId.getText()));
+        DAOFuncionario dao = new DAOFuncionario();
+        dao.Update(obj);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -506,6 +572,26 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     private void cbxAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAcessoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxAcessoActionPerformed
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        //Carregar a lista
+        CarregarTabela();
+
+    }//GEN-LAST:event_formInternalFrameActivated
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        //Pegando os dados da tabela para o formulario
+        SlideMaterialTabbed.setSelectedIndex(1);
+        txtId.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+        txtNome.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+        txtCpf.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+        txtUsuario.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+        txtSenha.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+        txtSalario.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+        txtCelular.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+        cbxCargo.setSelectedItem(table.getValueAt(table.getSelectedRow(), 7).toString());
+        cbxAcesso.setSelectedItem(table.getValueAt(table.getSelectedRow(), 8).toString());
+    }//GEN-LAST:event_tableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

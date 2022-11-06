@@ -5,7 +5,12 @@
  */
 package View.Login.Autenticacao;
 
+import DAO.DAOFuncionario;
+import View.Init.Principal;
+import com.formdev.flatlaf.IntelliJTheme;
 import java.awt.Color;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,36 +36,46 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        passwordField = new Source.Classes.Campos.PasswordField();
-        textField = new Source.Classes.Campos.TextField();
+        txtPassowrd = new Source.Classes.Campos.PasswordField();
+        txtUsuario = new Source.Classes.Campos.TextField();
+        jToggleButton1 = new javax.swing.JToggleButton();
         background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1280, 800));
         setMinimumSize(new java.awt.Dimension(1280, 800));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        passwordField.setBackground(new java.awt.Color(177, 227, 252));
-        passwordField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        passwordField.setLabelText("Senha");
-        passwordField.setShowAndHide(true);
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
+        txtPassowrd.setBackground(new java.awt.Color(177, 227, 252));
+        txtPassowrd.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtPassowrd.setLabelText("Senha");
+        txtPassowrd.setShowAndHide(true);
+        txtPassowrd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+                txtPassowrdActionPerformed(evt);
             }
         });
-        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 490, 372, 59));
+        getContentPane().add(txtPassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 490, 372, 59));
 
-        textField.setBackground(new java.awt.Color(177, 227, 252));
-        textField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        textField.setLabelText("Usuário");
-        textField.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.setBackground(new java.awt.Color(177, 227, 252));
+        txtUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        txtUsuario.setLabelText("Usuário");
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(textField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 370, 60));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 370, 60));
+
+        jToggleButton1.setContentAreaFilled(false);
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 575, 260, 60));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/telainicial/tela de cadastro.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -69,55 +84,48 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+    private void txtPassowrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassowrdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
+    }//GEN-LAST:event_txtPassowrdActionPerformed
 
-    private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        String usuario, senha;
+        usuario = txtUsuario.getText();
+        senha = txtPassowrd.getText();
+        DAOFuncionario dao = new DAOFuncionario();
+        dao.Login(usuario, senha);
+        if (dao.conseguiuLogar == true) {
+            this.dispose();
+
+        } else {
+
+        }
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
-               
+
             }
-            
+
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private Source.Classes.Campos.PasswordField passwordField;
-    private Source.Classes.Campos.TextField textField;
+    private javax.swing.JToggleButton jToggleButton1;
+    private Source.Classes.Campos.PasswordField txtPassowrd;
+    private Source.Classes.Campos.TextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

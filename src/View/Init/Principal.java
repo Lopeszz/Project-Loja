@@ -5,7 +5,6 @@
  */
 package View.Init;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.IntelliJTheme;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,8 +15,6 @@ import java.util.logging.Logger;
 import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
 import javaswingdev.MenuEvent;
-import javax.swing.JDesktopPane;
-import javax.swing.UIManager;
 
 /**
  * §
@@ -25,7 +22,9 @@ import javax.swing.UIManager;
  * @author Lopes
  */
 public class Principal extends javax.swing.JFrame {
-
+    
+    public String usuarioLogado;
+    
     public Principal() {
         initComponents();
         GradientDropdownMenu menu = new GradientDropdownMenu();
@@ -37,23 +36,23 @@ public class Principal extends javax.swing.JFrame {
         menu.addItem("Cadastrar", "Funcionário", "Cliente", "Produto", "Fornecedor");
         menu.setFont(Pegandoafont());
         menu.applay(this);
-        
-  
+
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 if (index == 1 && subIndex == 1 && menuItem) {
-                    FuncionarioInternalFrame f1 = new FuncionarioInternalFrame(DesktopPane);
-                    showForm(f1);
+                    FuncionarioInternalFrame obj = new FuncionarioInternalFrame(DesktopPane);
+                    showForm(obj);
                     menu.getComponentPopupMenu().setVisible(false);
+
                 } else if (index == 1 && subIndex == 2 && menuItem) {
-                    FuncionarioInternalFrame f1 = new FuncionarioInternalFrame(DesktopPane);
-                    showForm(f1);
+                    ClienteInternalFrame obj = new ClienteInternalFrame(DesktopPane);
+                    showForm(obj);
                     menu.getComponentPopupMenu().setVisible(false);
-                    
+
                 } else if (index == 0 && menuItem) {
                     menu.getComponentPopupMenu().setVisible(false);
-                    
+
                 }
             }
         }
@@ -79,17 +78,26 @@ public class Principal extends javax.swing.JFrame {
         }
         return null;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         DesktopPane = new javax.swing.JDesktopPane();
+        roundPanel1 = new javaswingdev.swing.RoundPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Whale ERP");
         setFocusTraversalPolicyProvider(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         DesktopPane.setMaximumSize(new java.awt.Dimension(1280, 750));
@@ -108,7 +116,37 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 750, Short.MAX_VALUE)
         );
 
-        getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 750));
+        getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 690));
+
+        roundPanel1.setBackground(new java.awt.Color(228, 223, 223));
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16)); // NOI18N
+        jLabel1.setText("Usúario Conectado:");
+
+        lblUsuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16)); // NOI18N
+        lblUsuario.setText("Null");
+
+        javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
+        roundPanel1.setLayout(roundPanel1Layout);
+        roundPanel1Layout.setHorizontalGroup(
+            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lblUsuario)
+                .addContainerGap(1092, Short.MAX_VALUE))
+        );
+        roundPanel1Layout.setVerticalGroup(
+            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundPanel1Layout.createSequentialGroup()
+                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblUsuario))
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 770, 1280, 30));
 
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Inicial/telaInicial.png"))); // NOI18N
@@ -118,12 +156,18 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        lblUsuario.setText(usuarioLogado);
+    }//GEN-LAST:event_formWindowActivated
+
     public static void main(String args[]) {
         IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
-                
+
             }
         });
     }
@@ -131,5 +175,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblUsuario;
+    private javaswingdev.swing.RoundPanel roundPanel1;
     // End of variables declaration//GEN-END:variables
 }
