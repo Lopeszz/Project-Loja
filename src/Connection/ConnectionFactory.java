@@ -20,7 +20,7 @@ public class ConnectionFactory {
 
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1/macaco?useTimezone=true&serverTimezone=UTC&useSSL=false", "macaco", "macaco");
+            return DriverManager.getConnection("jdbc:mysql://localhost/macaco?allowPublicKeyRetrieval=true&useSSL=false", "macaco", "macaco");
 
         } catch (Exception e) {
             throw new RuntimeException(e);

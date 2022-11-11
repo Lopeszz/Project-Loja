@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
                 txtPassowrdActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 490, 372, 59));
+        getContentPane().add(txtPassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 487, 370, 60));
 
         txtUsuario.setBackground(new java.awt.Color(177, 227, 252));
         txtUsuario.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -66,7 +66,7 @@ public class Login extends javax.swing.JFrame {
                 txtUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 370, 60));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 400, 370, 60));
 
         jToggleButton1.setContentAreaFilled(false);
         jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -98,9 +98,8 @@ public class Login extends javax.swing.JFrame {
         senha = txtPassowrd.getText();
         DAOFuncionario dao = new DAOFuncionario();
         dao.Login(usuario, senha);
-        if (dao.conseguiuLogar == true) {
+        if (dao.conseguiuLogar) {
             this.dispose();
-
         } else {
 
         }

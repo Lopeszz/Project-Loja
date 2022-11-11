@@ -22,9 +22,9 @@ import javaswingdev.MenuEvent;
  * @author Lopes
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     public String usuarioLogado;
-    
+
     public Principal() {
         initComponents();
         GradientDropdownMenu menu = new GradientDropdownMenu();
@@ -33,25 +33,32 @@ public class Principal extends javax.swing.JFrame {
         menu.setGradientColor(Color.black, Color.black);
         menu.setHeaderGradient(false);
         menu.addItem("Inicial");
-        menu.addItem("Cadastrar", "Funcionário", "Cliente", "Produto", "Fornecedor");
+        menu.addItem("Cadastrar", "Funcionário", "Fornecedor", "Cliente");
         menu.setFont(Pegandoafont());
         menu.applay(this);
 
         menu.addEvent(new MenuEvent() {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
-                if (index == 1 && subIndex == 1 && menuItem) {
-                    FuncionarioInternalFrame obj = new FuncionarioInternalFrame(DesktopPane);
+                if (index == 0 && menuItem) {
+                    // como limpar todos os JinternalFrames
+                    DesktopPane.removeAll();
+                    DesktopPane.repaint();
+                    DesktopPane.revalidate();
+                } else if (index == 1 && subIndex == 1 && menuItem) {
+                    FuncionarioInternalFrame objFuncionario = new FuncionarioInternalFrame(DesktopPane);
+                    showForm(objFuncionario);
+                    menu.getComponentPopupMenu().setVisible(false);
+                } else if (index == 1 && subIndex == 2 && menuItem) {
+                    FornecedorInternalFrame obj = new FornecedorInternalFrame(DesktopPane);
                     showForm(obj);
                     menu.getComponentPopupMenu().setVisible(false);
-
-                } else if (index == 1 && subIndex == 2 && menuItem) {
+                } else if (index == 1 && subIndex == 3 && menuItem) {
                     ClienteInternalFrame obj = new ClienteInternalFrame(DesktopPane);
                     showForm(obj);
                     menu.getComponentPopupMenu().setVisible(false);
-
-                } else if (index == 0 && menuItem) {
-                    menu.getComponentPopupMenu().setVisible(false);
+                } else if (index == 1 && subIndex == 4 && menuItem) {
+                    
 
                 }
             }
@@ -72,6 +79,7 @@ public class Principal extends javax.swing.JFrame {
             montserrat = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/Source/Fontes/Montserrat-SemiBold.ttf"));
             montserrat = montserrat.deriveFont(Font.PLAIN, 16);
             return montserrat;
+
         } catch (FontFormatException | IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("deu errado na font");
@@ -116,7 +124,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 750, Short.MAX_VALUE)
         );
 
-        getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 690));
+        getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 750));
 
         roundPanel1.setBackground(new java.awt.Color(228, 223, 223));
 

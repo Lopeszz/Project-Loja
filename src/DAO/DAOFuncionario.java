@@ -8,7 +8,6 @@ package DAO;
 import Connection.ConnectionFactory;
 import Modelos.Funcionario;
 import View.Init.Principal;
-import com.sun.prism.impl.GlyphCache;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -26,13 +24,12 @@ import jdk.nashorn.internal.ir.BreakNode;
 public class DAOFuncionario {
 
     public boolean conseguiuLogar;
-    private Connection con;
+    private final Connection con;
 
     public DAOFuncionario() {
         this.con = new ConnectionFactory().getConnection();
     }
-
-    //CREAT
+    //SAVE
     public void Save(Funcionario obj) {
         try {
             String sql = "INSERT INTO funcionario (nome,cpf,usuario,senha,salario,celular,cargo,nivel_acesso) VALUES(?,?,?,?,?,?,?,?)";
@@ -89,7 +86,7 @@ public class DAOFuncionario {
         }
     }
 
-    //Excluir
+    //DELETE
     public void Delete(Funcionario obj) {
         try {
             String sql = "delete from funcionario where id_funcionario = ?";
@@ -106,7 +103,7 @@ public class DAOFuncionario {
 
     }
 
-    //Update
+    //UPDATE
     public void Update(Funcionario obj) {
         try {
             //Criando comando
@@ -132,6 +129,7 @@ public class DAOFuncionario {
         }
     }
 
+    //SIGN IN
     public void Login(String usuario, String senha) {
         try {
 
@@ -151,8 +149,7 @@ public class DAOFuncionario {
 
             } else {
                 //dados invalidos
-                JOptionPane.showMessageDialog(null, "Dados incorretos");
-
+                JOptionPane.showMessageDialog(null, "Dados incorretos", "Erro ao se conectar", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (SQLException e) {
