@@ -29,6 +29,7 @@ public class DAOFuncionario {
     public DAOFuncionario() {
         this.con = new ConnectionFactory().getConnection();
     }
+
     //SAVE
     public void Save(Funcionario obj) {
         try {
@@ -129,6 +130,68 @@ public class DAOFuncionario {
         }
     }
 
+    //BuscaPorNomeTabela
+    public List<Funcionario> buscaFuncionarioPorNomeTabela(String nome) {
+        try {
+            //Criando a lista
+            List<Funcionario> lista = new ArrayList<>();
+            //Comando Sql
+            String sql = "select * from funcionario f where f.nome like ?";
+            //Executar
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+            //Armazenando os dados
+            ResultSet rs = stmt.executeQuery();
+            //Jogando os dados para o ArrayList
+            while (rs.next()) {
+                Funcionario obj = new Funcionario();
+                obj.setId_funcionario(rs.getInt("id_funcionario"));
+                obj.setNome(rs.getString("nome"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setUsuario(rs.getString("usuario"));
+                obj.setSenha(rs.getString("senha"));
+                obj.setSalario(rs.getDouble("salario"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCargo(rs.getString("cargo"));
+                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                //guardando o obj na lista
+                lista.add(obj);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            return null;
+        }
+    }
+
+    //BuscaPorNomeFrameDados
+    public Funcionario buscaFuncionarioPorNomeFrameDados(String nome) {
+        try {
+            String sql = "select * from funcionario f where f.nome = ?";
+            //Executar
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+            ResultSet rs = stmt.executeQuery();
+            Funcionario obj = new Funcionario();
+            if (rs.next()) {
+                obj.setId_funcionario(rs.getInt("id_funcionario"));
+                obj.setNome(rs.getString("nome"));
+                obj.setCpf(rs.getString("cpf"));
+                obj.setUsuario(rs.getString("usuario"));
+                obj.setSenha(rs.getString("senha"));
+                obj.setSalario(rs.getDouble("salario"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCargo(rs.getString("cargo"));
+                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+            }
+            return obj;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Funcionario não encontrado");
+        }
+        return null;
+    }
+
     //SIGN IN
     public void Login(String usuario, String senha) {
         try {
@@ -157,4 +220,5 @@ public class DAOFuncionario {
         }
 
     }
+
 }

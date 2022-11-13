@@ -92,7 +92,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         DesktopPane = new javax.swing.JDesktopPane();
-        roundPanel1 = new javaswingdev.swing.RoundPanel();
+        lblUsuarioConectado = new javaswingdev.swing.RoundPanel();
         jLabel1 = new javax.swing.JLabel();
         lblUsuario = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
@@ -126,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1280, 750));
 
-        roundPanel1.setBackground(new java.awt.Color(228, 223, 223));
+        lblUsuarioConectado.setBackground(new java.awt.Color(228, 223, 223));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16)); // NOI18N
         jLabel1.setText("Usúario Conectado:");
@@ -134,27 +134,27 @@ public class Principal extends javax.swing.JFrame {
         lblUsuario.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 16)); // NOI18N
         lblUsuario.setText("Null");
 
-        javax.swing.GroupLayout roundPanel1Layout = new javax.swing.GroupLayout(roundPanel1);
-        roundPanel1.setLayout(roundPanel1Layout);
-        roundPanel1Layout.setHorizontalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout lblUsuarioConectadoLayout = new javax.swing.GroupLayout(lblUsuarioConectado);
+        lblUsuarioConectado.setLayout(lblUsuarioConectadoLayout);
+        lblUsuarioConectadoLayout.setHorizontalGroup(
+            lblUsuarioConectadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblUsuarioConectadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(lblUsuario)
                 .addContainerGap(1092, Short.MAX_VALUE))
         );
-        roundPanel1Layout.setVerticalGroup(
-            roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roundPanel1Layout.createSequentialGroup()
-                .addGroup(roundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        lblUsuarioConectadoLayout.setVerticalGroup(
+            lblUsuarioConectadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(lblUsuarioConectadoLayout.createSequentialGroup()
+                .addGroup(lblUsuarioConectadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblUsuario))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
-        getContentPane().add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 770, 1280, 30));
+        getContentPane().add(lblUsuarioConectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 770, 1280, 30));
 
         Background.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source/Img/Inicial/telaInicial.png"))); // NOI18N
@@ -185,6 +185,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblUsuario;
-    private javaswingdev.swing.RoundPanel roundPanel1;
+    private javaswingdev.swing.RoundPanel lblUsuarioConectado;
     // End of variables declaration//GEN-END:variables
 }

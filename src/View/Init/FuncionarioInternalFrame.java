@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,8 +38,8 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         this.setVisible(true);
         initWinButtonInternal();
     }
-    
-    private void setarCamposVazios(){
+
+    private void setarCamposVazios() {
         txtId.setText("");
         txtNome.setText("");
         txtCpf.setText("");
@@ -103,6 +101,33 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         }
     }
 
+    public void Pesquisar() {
+        String nome = "%" + txtNomeParaPesquisar.getText() + "%";
+        DAOFuncionario dao = new DAOFuncionario();
+
+        List<Funcionario> Lista = dao.buscaFuncionarioPorNomeTabela(nome);
+        DefaultTableModel dados = (DefaultTableModel) table.getModel();
+        dados.setNumRows(0);
+
+        for (Funcionario obj : Lista) {
+            dados.addRow(new Object[]{
+                obj.getId_funcionario(),
+                obj.getNome(),
+                obj.getCpf(),
+                obj.getUsuario(),
+                obj.getSenha(),
+                obj.getSalario(),
+                obj.getCelular(),
+                obj.getCargo(),
+                obj.getNivel_acesso()
+            });
+        }
+        if (txtNomeParaPesquisar.getText().equals("")) {
+            CarregarTabela();
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -119,14 +144,18 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         PanelButoes = new javax.swing.JPanel();
         btnProximo = new Source.Button.ButtonCommun();
         btnAnteriro = new Source.Button.ButtonCommun();
+        lblNomeDoPsquisar = new javax.swing.JLabel();
+        txtNomeParaPesquisar = new javax.swing.JTextField();
+        btnPesquisarTabela = new Source.Button.ButtonCommun();
         Painel_Dados_Funcionario = new javax.swing.JPanel();
         Componentes = new javax.swing.JPanel();
         PainelBtn = new javax.swing.JPanel();
+        btnPesquisar = new Source.Button.ButtonCommun();
         btnNovo = new Source.Button.ButtonCommun();
         btnSalvar = new Source.Button.ButtonCommun();
-        btnRemover = new Source.Button.ButtonCommun();
         btnAlterar = new Source.Button.ButtonCommun();
-        btnCancelar = new Source.Button.ButtonCommun();
+        btnRemover = new Source.Button.ButtonCommun();
+        btnLimpar = new Source.Button.ButtonCommun();
         txtId = new javax.swing.JTextField();
         painelComplementardoTxtId = new javax.swing.JPanel();
         txtCpf = new javax.swing.JTextField();
@@ -274,7 +303,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25))
         );
 
-        Painel_Tabela_Funcionario.add(PanelTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 480));
+        Painel_Tabela_Funcionario.add(PanelTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1300, 480));
 
         PanelButoes.setBackground(new java.awt.Color(228, 223, 223));
         PanelButoes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -294,7 +323,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 btnProximoActionPerformed(evt);
             }
         });
-        PanelButoes.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
+        PanelButoes.add(btnProximo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
 
         btnAnteriro.setBorder(null);
         btnAnteriro.setForeground(new java.awt.Color(62, 156, 241));
@@ -311,9 +340,50 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
                 btnAnteriroActionPerformed(evt);
             }
         });
-        PanelButoes.add(btnAnteriro, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, -1, -1));
+        PanelButoes.add(btnAnteriro, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
 
         Painel_Tabela_Funcionario.add(PanelButoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 460, 1300, 150));
+
+        lblNomeDoPsquisar.setBackground(new java.awt.Color(0, 102, 255));
+        lblNomeDoPsquisar.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        lblNomeDoPsquisar.setText("Nome:");
+        Painel_Tabela_Funcionario.add(lblNomeDoPsquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 13, -1, -1));
+
+        txtNomeParaPesquisar.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 15)); // NOI18N
+        txtNomeParaPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeParaPesquisarActionPerformed(evt);
+            }
+        });
+        txtNomeParaPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomeParaPesquisarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNomeParaPesquisarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeParaPesquisarKeyTyped(evt);
+            }
+        });
+        Painel_Tabela_Funcionario.add(txtNomeParaPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 9, 340, -1));
+
+        btnPesquisarTabela.setBorder(null);
+        btnPesquisarTabela.setForeground(new java.awt.Color(62, 156, 241));
+        btnPesquisarTabela.setText("Pesquisar");
+        btnPesquisarTabela.setColorOver(new java.awt.Color(200, 235, 253));
+        btnPesquisarTabela.setFocusable(false);
+        btnPesquisarTabela.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 15)); // NOI18N
+        btnPesquisarTabela.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnPesquisarTabela.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnPesquisarTabela.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnPesquisarTabela.setRadius(30);
+        btnPesquisarTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarTabelaActionPerformed(evt);
+            }
+        });
+        Painel_Tabela_Funcionario.add(btnPesquisarTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 8, 90, 30));
 
         SlideMaterialTabbed.addTab("  Tabela", Painel_Tabela_Funcionario);
 
@@ -331,6 +401,25 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10);
         flowLayout1.setAlignOnBaseline(true);
         PainelBtn.setLayout(flowLayout1);
+
+        btnPesquisar.setBorder(null);
+        btnPesquisar.setForeground(new java.awt.Color(62, 156, 241));
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.setColorOver(new java.awt.Color(200, 235, 253));
+        btnPesquisar.setFocusable(false);
+        btnPesquisar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnPesquisar.setHideActionText(true);
+        btnPesquisar.setMargin(new java.awt.Insets(2, 30, 2, 30));
+        btnPesquisar.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnPesquisar.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnPesquisar.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnPesquisar.setRadius(60);
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
+        PainelBtn.add(btnPesquisar);
 
         btnNovo.setBorder(null);
         btnNovo.setForeground(new java.awt.Color(62, 156, 241));
@@ -366,25 +455,6 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         });
         PainelBtn.add(btnSalvar);
 
-        btnRemover.setBorder(null);
-        btnRemover.setForeground(new java.awt.Color(62, 156, 241));
-        btnRemover.setText("Remover");
-        btnRemover.setColorOver(new java.awt.Color(200, 235, 253));
-        btnRemover.setFocusable(false);
-        btnRemover.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
-        btnRemover.setHideActionText(true);
-        btnRemover.setMargin(new java.awt.Insets(2, 30, 2, 30));
-        btnRemover.setMaximumSize(new java.awt.Dimension(183, 51));
-        btnRemover.setMinimumSize(new java.awt.Dimension(183, 51));
-        btnRemover.setPreferredSize(new java.awt.Dimension(183, 51));
-        btnRemover.setRadius(60);
-        btnRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverActionPerformed(evt);
-            }
-        });
-        PainelBtn.add(btnRemover);
-
         btnAlterar.setBorder(null);
         btnAlterar.setForeground(new java.awt.Color(62, 156, 241));
         btnAlterar.setText("Alterar");
@@ -402,22 +472,39 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         });
         PainelBtn.add(btnAlterar);
 
-        btnCancelar.setBorder(null);
-        btnCancelar.setForeground(new java.awt.Color(62, 156, 241));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setColorOver(new java.awt.Color(200, 235, 253));
-        btnCancelar.setFocusable(false);
-        btnCancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
-        btnCancelar.setMaximumSize(new java.awt.Dimension(183, 51));
-        btnCancelar.setMinimumSize(new java.awt.Dimension(183, 51));
-        btnCancelar.setPreferredSize(new java.awt.Dimension(183, 51));
-        btnCancelar.setRadius(60);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnRemover.setBorder(null);
+        btnRemover.setForeground(new java.awt.Color(62, 156, 241));
+        btnRemover.setText("Remover");
+        btnRemover.setColorOver(new java.awt.Color(200, 235, 253));
+        btnRemover.setFocusable(false);
+        btnRemover.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnRemover.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnRemover.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnRemover.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnRemover.setRadius(60);
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
+                btnRemoverActionPerformed(evt);
             }
         });
-        PainelBtn.add(btnCancelar);
+        PainelBtn.add(btnRemover);
+
+        btnLimpar.setBorder(null);
+        btnLimpar.setForeground(new java.awt.Color(62, 156, 241));
+        btnLimpar.setText("Limpar");
+        btnLimpar.setColorOver(new java.awt.Color(200, 235, 253));
+        btnLimpar.setFocusable(false);
+        btnLimpar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 16)); // NOI18N
+        btnLimpar.setMaximumSize(new java.awt.Dimension(183, 51));
+        btnLimpar.setMinimumSize(new java.awt.Dimension(183, 51));
+        btnLimpar.setPreferredSize(new java.awt.Dimension(183, 51));
+        btnLimpar.setRadius(60);
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
+        PainelBtn.add(btnLimpar);
 
         Componentes.add(PainelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 1280, -1));
 
@@ -570,18 +657,34 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         if (naoPodeSalver) {
             dao.Save(obj);
             CarregarTabela();
+            setarCamposVazios();
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         // TODO add your handling code here:
-        Funcionario obj = new Funcionario();
-        obj.setId_funcionario(Integer.parseInt(txtId.getText()));
+        String nome = txtNome.getText();
         DAOFuncionario dao = new DAOFuncionario();
-        dao.Delete(obj);
-        CarregarTabela();
-    }//GEN-LAST:event_btnRemoverActionPerformed
+        Funcionario obj = new Funcionario();
+        obj = dao.buscaFuncionarioPorNomeFrameDados(nome);
+
+        //Exibir os dados
+        if (obj.getNome() != null) {
+            txtId.setText(String.valueOf(obj.getId_funcionario()));
+            txtNome.setText(obj.getNome());
+            txtCpf.setText(obj.getCpf());
+            txtUsuario.setText(obj.getUsuario());
+            txtSenha.setText(obj.getSenha());
+            txtSalario.setText(String.valueOf(obj.getSalario()));
+            txtCelular.setText(obj.getCelular());
+            cbxCargo.setSelectedItem(obj.getCargo());
+            cbxAcesso.setSelectedItem(obj.getNivel_acesso());
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Funcionario não encontrado");
+        }
+
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         //botao alterar
@@ -601,22 +704,21 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
+        Funcionario obj = new Funcionario();
+        obj.setId_funcionario(Integer.parseInt(txtId.getText()));
+        DAOFuncionario dao = new DAOFuncionario();
+        dao.Delete(obj);
+        CarregarTabela();
+    }//GEN-LAST:event_btnRemoverActionPerformed
     private void btnAnteriroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriroActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnAnteriroActionPerformed
-
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnProximoActionPerformed
     private void cbxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCargoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cbxCargoActionPerformed
     private void cbxAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAcessoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cbxAcessoActionPerformed
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         //Carregar a lista
@@ -640,6 +742,34 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
 
+    private void txtNomeParaPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeParaPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeParaPesquisarActionPerformed
+
+    private void txtNomeParaPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeParaPesquisarKeyPressed
+        // TODO add your handling code here:
+        Pesquisar();
+    }//GEN-LAST:event_txtNomeParaPesquisarKeyPressed
+
+    private void txtNomeParaPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeParaPesquisarKeyReleased
+        // TODO add your handling code here:
+        Pesquisar();
+    }//GEN-LAST:event_txtNomeParaPesquisarKeyReleased
+
+    private void txtNomeParaPesquisarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeParaPesquisarKeyTyped
+        // TODO add your handling code here:
+        Pesquisar();
+    }//GEN-LAST:event_txtNomeParaPesquisarKeyTyped
+
+    private void btnPesquisarTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarTabelaActionPerformed
+        Pesquisar();
+    }//GEN-LAST:event_btnPesquisarTabelaActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        // TODO add your handling code here:
+        setarCamposVazios();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackgroundSlideMaterialTabbed;
     private javax.swing.JPanel BackgroundTopRight;
@@ -654,8 +784,10 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     private Source.Classes.Slide.MaterialTabbed SlideMaterialTabbed;
     private Source.Button.ButtonCommun btnAlterar;
     private Source.Button.ButtonCommun btnAnteriro;
-    private Source.Button.ButtonCommun btnCancelar;
+    private Source.Button.ButtonCommun btnLimpar;
     private Source.Button.ButtonCommun btnNovo;
+    private Source.Button.ButtonCommun btnPesquisar;
+    private Source.Button.ButtonCommun btnPesquisarTabela;
     private Source.Button.ButtonCommun btnProximo;
     private Source.Button.ButtonCommun btnRemover;
     private Source.Button.ButtonCommun btnSalvar;
@@ -663,6 +795,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbxCargo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblControleFuncionarios;
+    private javax.swing.JLabel lblNomeDoPsquisar;
     private javax.swing.JPanel painelComplementardoTxtId;
     private javaswingdev.swing.RoundPanel roundPanel1;
     private Source.Classes.Table.Table table;
@@ -670,6 +803,7 @@ public class FuncionarioInternalFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeParaPesquisar;
     private javax.swing.JTextField txtSalario;
     private javax.swing.JTextField txtSenha;
     private javax.swing.JTextField txtUsuario;

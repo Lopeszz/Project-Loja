@@ -61,7 +61,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="javaswingdev.swing.RoundPanel" name="roundPanel1">
+    <Container class="javaswingdev.swing.RoundPanel" name="lblUsuarioConectado">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="df" green="df" red="e4" type="rgb"/>

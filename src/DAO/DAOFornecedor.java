@@ -7,6 +7,7 @@ package DAO;
 
 import Connection.ConnectionFactory;
 import Modelos.Fornecedor;
+import jacontrol.Classes.WebServiceCep;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,10 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Giovani
- */
 public class DAOFornecedor {
 
     private final Connection con;
@@ -28,7 +25,7 @@ public class DAOFornecedor {
         this.con = new ConnectionFactory().getConnection();
     }
 
-    //SAVE
+    //CREAT
     public void Save(Fornecedor obj) {
         try {
             String sql = "INSERT INTO fornecedor (nome,cnpj,email,celular,cep,rua,numero,complemento,bairro,cidade,estado) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
@@ -54,7 +51,7 @@ public class DAOFornecedor {
     }
 
     //READ
-    public List<Fornecedor> listarfornecedor() {
+    public List<Fornecedor> listarFornecedor() {
         try {
             //Criando a lista
             List<Fornecedor> lista = new ArrayList<>();
@@ -81,7 +78,6 @@ public class DAOFornecedor {
                 obj.setEstado(rs.getString("estado"));
                 //guardando o obj na lista
                 lista.add(obj);
-
             }
             return lista;
 
@@ -91,7 +87,7 @@ public class DAOFornecedor {
         }
     }
 
-    //Delete
+    //DELETE
     public void Delete(Fornecedor obj) {
         try {
             String sql = "delete from fornecedor where id_fornecedor = ?";
@@ -107,7 +103,7 @@ public class DAOFornecedor {
 
     }
 
-    //Update
+    //UPDATE
     public void Update(Fornecedor obj) {
         try {
             //Criando comando
@@ -136,4 +132,90 @@ public class DAOFornecedor {
             JOptionPane.showConfirmDialog(null, "Erro: " + e);
         }
     }
+
+    //BuscaPorNomeTabela
+    public List<Fornecedor> buscaFornecedorPorNomeTabela(String nome) {
+        try {
+            //Criando a lista
+            List<Fornecedor> lista = new ArrayList<>();
+            //Comando Sql
+            String sql = "select * from fornecedor f where f.nome like ?";
+            //Executar
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+            //Armazenando os dados
+            ResultSet rs = stmt.executeQuery();
+            //Jogando os dados para o ArrayList
+            while (rs.next()) {
+                Fornecedor obj = new Fornecedor();
+                obj.setId_fornecedor(rs.getInt("id_fornecedor"));
+                obj.setNome(rs.getString("nome"));
+                obj.setCnpj(rs.getString("cnpj"));
+                obj.setEmail(rs.getString("email"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setRua(rs.getString("rua"));
+                obj.setNumero(rs.getInt("numero"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+                //guardando o obj na lista
+                lista.add(obj);
+            }
+            return lista;
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+            return null;
+        }
+    }
+
+    //BuscaPorNomeFrameDados
+    public Fornecedor buscaFornecedorPorNomeFrameDados(String nome) {
+        try {
+            String sql = "select * from fornecedor f where f.nome = ?";
+            //Executar
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome);
+            ResultSet rs = stmt.executeQuery();
+            Fornecedor obj = new Fornecedor();
+            if (rs.next()) {
+                obj.setId_fornecedor(rs.getInt("id_fornecedor"));
+                obj.setNome(rs.getString("nome"));
+                obj.setCnpj(rs.getString("cnpj"));
+                obj.setEmail(rs.getString("email"));
+                obj.setCelular(rs.getString("celular"));
+                obj.setCep(rs.getString("cep"));
+                obj.setRua(rs.getString("rua"));
+                obj.setNumero(rs.getInt("numero"));
+                obj.setComplemento(rs.getString("complemento"));
+                obj.setBairro(rs.getString("bairro"));
+                obj.setCidade(rs.getString("cidade"));
+                obj.setEstado(rs.getString("estado"));
+            }
+            return obj;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Fornecedor não encontrado");
+        }
+        return null;
+    }
+
+    public Fornecedor buscaCep(String cep) {
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+        Fornecedor obj = new Fornecedor();
+
+        if (webServiceCep.wasSuccessful()) {
+            obj.setRua(webServiceCep.getLogradouroFull());
+            obj.setCidade(webServiceCep.getCidade());
+            obj.setBairro(webServiceCep.getBairro());
+            obj.setEstado(webServiceCep.getUf());
+            return obj;
+        } else {
+            JOptionPane.showMessageDialog(null, "CEP não encontrado na base de dados");
+            return null;
+        }
+
+    }
+
 }
