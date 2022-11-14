@@ -5,7 +5,9 @@
  */
 package View.Init;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.IntelliJTheme;
+import static com.formdev.flatlaf.IntelliJTheme.setup;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
@@ -33,7 +35,8 @@ public class Principal extends javax.swing.JFrame {
         menu.setGradientColor(Color.black, Color.black);
         menu.setHeaderGradient(false);
         menu.addItem("Inicial");
-        menu.addItem("Cadastrar", "Funcionário", "Fornecedor", "Cliente");
+        menu.addItem("Cadastrar", "Funcionário", "Fornecedor", "Cliente", "Produto");
+        menu.addItem("PDV");
         menu.setFont(Pegandoafont());
         menu.applay(this);
 
@@ -41,7 +44,6 @@ public class Principal extends javax.swing.JFrame {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 if (index == 0 && menuItem) {
-                    // como limpar todos os JinternalFrames
                     DesktopPane.removeAll();
                     DesktopPane.repaint();
                     DesktopPane.revalidate();
@@ -58,9 +60,15 @@ public class Principal extends javax.swing.JFrame {
                     showForm(obj);
                     menu.getComponentPopupMenu().setVisible(false);
                 } else if (index == 1 && subIndex == 4 && menuItem) {
-                    
-
+                    ProdutoInternalFrame obj = new ProdutoInternalFrame(DesktopPane);
+                    showForm(obj);
+                    menu.getComponentPopupMenu().setVisible(false);
+                }else if (index == 2 && menuItem) {
+                    PDVInternalFrame obj = new PDVInternalFrame(DesktopPane);
+                    showForm(obj);
+                    menu.getComponentPopupMenu().setVisible(false);
                 }
+               
             }
         }
         );
@@ -170,8 +178,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
-        IntelliJTheme.setup(Principal.class.getResourceAsStream("/Cyan.theme.json"));
-
+        IntelliJTheme.setup(Principal.class.getResourceAsStream("../style/Cyan.theme.json"));
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);

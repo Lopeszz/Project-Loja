@@ -92,5 +92,4 @@ public class Funcionario {
     public void setNivel_acesso(String nivel_acesso) {
         this.nivel_acesso = nivel_acesso;
     }
-
 }
